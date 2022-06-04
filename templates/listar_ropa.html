@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1> El listado de la ropa es el siguiente: </h1>
+
+        {% for ropaa in list_ropa %}
+            <h2>El producto se llama {{ropaa.ropa_name}}</h2>
+            <h2>Es de color {{ropaa.ropa_color}}</h2>
+            <h2>Es de la marca {{ropaa.ropa_marca}}</h2>
+            <h2>Y sale USD{{ropaa.ropa_precio}}</h2>
+        {% endfor %}
+
+</body>
+</html>
+
