@@ -8,3 +8,5 @@ def listar_ropa(request):
     return render (request, 'listar_ropa.html', context = context)
 
 
+def upload(request):
+    return render(request, 'upload.html')
