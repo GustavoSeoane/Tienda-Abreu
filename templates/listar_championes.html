@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form acction="" method="post" >
+{% load humanize %} 
+    <h1> El listado de los championes es el siguiente: </h1>
+
+    {% for championess in list_championes %}
+
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            {% if ropaa.ropa_imagen %}
+            <img Src={{championess.championes_imagen.url}} width="180" height="180">
+            {% endif %}
+          </div>
+            <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{championess.ropa_name}}</h5>
+              <p class="card-text">Es de color {{championess.championes_color}} y es de la marca {{championess.championes_marca}}.</p>
+              <p class="card-text"><small class="text-muted">Precio - USD: {{championess.championes_precio | intcomma}}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+{% endblock%}

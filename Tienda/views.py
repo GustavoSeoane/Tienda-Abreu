@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from Tienda.models import Marcas, Ropa, Championes, Accesorios
-from Tienda.forms import ropa_forms
+from Tienda.forms import ropa_forms,championes_forms
 # Create your views here.
 
 def listar_ropa(request):
@@ -28,3 +28,25 @@ def crear_ropa(request):
 
 def upload(request):
     return render(request, 'upload.html')
+
+def listar_championes(request):
+    list_championes = Championes.objects.all()
+    context = {'list_championes' : list_championes }
+    return render (request, 'listar_championes.html', context = context)
+
+def crear_championes(request):
+    if request.method == 'GET':
+        form = championes_forms()
+        context = {'form' : form}
+        return render(request, 'crear_championes.html', context=context )
+    else:  
+        form = championes_forms(request.POST)
+        if form.is_valid():
+            new_championes = Championes.objects.create(
+                championes_name = form.cleaned_data['championes_name'],
+                championes_color = form.cleaned_data['championes_color'],
+                championes_marca = form.cleaned_data['championes_marca'],
+                championes_precio = form.cleaned_data['championes_precio'],
+            )
+            context = {'new_championes' : new_championes}
+        return render(request, 'crear_championes.html', context=context )  
