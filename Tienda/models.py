@@ -22,9 +22,11 @@ class Championes (models.Model):
     championes_color = models.CharField(max_length=100)
     championes_marca = models.CharField(max_length=100)
     championes_precio = models.FloatField()
+    championes_imagen = models.ImageField(upload_to="championes", null=True)
 
 class Accesorios (models.Model):
     accesorio_name = models.CharField(max_length=200) 
     accesorio_tipo = models.CharField(max_length=100)
     accesorio_marca = models.CharField(max_length=100)
     accesorio_precio = models.FloatField()
+    accesorio_imagen = models.ImageField(upload_to="accesorios", null=True)
