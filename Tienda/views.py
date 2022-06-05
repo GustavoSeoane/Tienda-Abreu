@@ -26,5 +26,13 @@ def crear_ropa(request):
             context = {'new_ropa' : new_ropa}
         return render(request, 'crear_ropa.html', context=context )
 
+
+
+def listar_championes(request):
+    list_championes = Championes.objects.all()
+    context = {'list_championes' : list_championes }
+    return render (request, 'listar_championes.html', context = context)
+
+
 def upload(request):
     return render(request, 'upload.html')
