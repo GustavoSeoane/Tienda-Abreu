@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<form acction="" method="post" enctype="multipart/form-data">
+<form acction="" method="post" >
 {% load humanize %} 
     <h1> El listado de la ropa es el siguiente: </h1>
 
@@ -12,8 +12,8 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            {% if ropaa.imagen %}
-            <img Src={{ropaa.imagen.url}} width="180" height="180">
+            {% if ropaa.ropa_imagen %}
+            <img Src={{ropaa.ropa_imagen.url}} width="180" height="180">
             {% endif %}
           </div>
             <div class="col-md-8">

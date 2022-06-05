@@ -15,7 +15,7 @@ class Ropa (models.Model):
     ropa_color = models.CharField(max_length=100)
     ropa_marca = models.CharField(max_length=100)
     ropa_precio = models.FloatField()
-    imagen = models.ImageField(upload_to="ropa", null=True)
+    ropa_imagen = models.ImageField(upload_to="ropa", null=True)
 
 class Championes (models.Model):
     championes_name = models.CharField(max_length=200)

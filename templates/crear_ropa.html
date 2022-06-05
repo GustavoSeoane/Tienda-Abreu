@@ -5,12 +5,12 @@
 
 {% if form %}
     <h1>Vamos a crear ropita</h1>
-    <form action = "" method="POST">
+    <form action = "" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
         {{form.as_table}}
         </table>
-        <input type="submit", value="Enviar">
+        <input type="submit", value="Guardar">
     </form>    
 
 {% elif new_ropa %}
