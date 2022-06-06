@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from Tienda.models import Marcas, Ropa, Championes, Accesorios
@@ -25,6 +26,14 @@ def crear_ropa(request):
             )
             context = {'new_ropa' : new_ropa}
         return render(request, 'crear_ropa.html', context=context )
+
+
+def search_ropa(request):
+    print(request.GET)
+    busquedaRopa = Ropa.objects.filter( ropa_name__icontains = request.GET['search'])
+    context = {'busquedaRopa':busquedaRopa}
+    return render(request, 'search-ropa.html', context = context)
+
 
 def upload(request):
     return render(request, 'upload.html')
