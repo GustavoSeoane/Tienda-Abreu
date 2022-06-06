@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<form acction="" method="post">
+    {% load humanize %}
+    <h1> Los accesorios disponibles son los siguientes: </h1>
+
+    {% for accesorioss in list_accesorio %}
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                {% if accesorioss.accesorio_imagen %}
+                <img Src={{accesorioss.accesorio_imagen.url}} width="180" height="180"> {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{accesorioss.accesorio_name}}</h5>
+                    <p class="card-text">Es de color {{accesorioss.accesorio_color}} y es de la marca {{accesorioss.accesorio_marca}}.</p>
+                    <p class="card-text"><small class="text-muted">Precio - USD: {{accesorioss.accesorio_precio | intcomma}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %} {% endblock%}

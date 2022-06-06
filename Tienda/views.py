@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from Tienda.models import Marcas, Ropa, Championes, Accesorios
-from Tienda.forms import ropa_forms,championes_forms
+from Tienda.forms import ropa_forms,championes_forms, accesorios_forms
 # Create your views here.
 
 def listar_ropa(request):
@@ -59,3 +59,26 @@ def crear_championes(request):
             )
             context = {'new_championes' : new_championes}
         return render(request, 'crear_championes.html', context=context )  
+
+
+def listar_accesorios(request):
+    list_accesorios = Accesorios.objects.all()
+    context = {'list_accesorios' : list_accesorios }
+    return render (request, 'listar_accesorios.html', context = context)
+
+def crear_accesorios(request):
+    if request.method == 'GET':
+        form = accesorios_forms()
+        context = {'form' : form}
+        return render(request, 'crear_accesorios.html', context=context )
+    else:  
+        form = accesorios_forms(request.POST)
+        if form.is_valid():
+            new_accesorio = Accesorios.objects.create(
+                ropa_name = form.cleaned_data['accesorio_name'],
+                ropa_color = form.cleaned_data['accesorio_color'],
+                ropa_marca = form.cleaned_data['accesorio_marca'],
+                ropa_precio = form.cleaned_data['accesorio_precio'],
+            )
+            context = {'new_accesorio' : new_accesorio}
+        return render(request, 'crear_accesorio.html', context=context )
