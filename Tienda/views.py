@@ -25,15 +25,19 @@ def crear_ropa(request):
                 ropa_precio = form.cleaned_data['ropa_precio'],
             )
             context = {'new_ropa' : new_ropa}
+        else:
+            context = {'errors' : form.errors}
         return render(request, 'crear_ropa.html', context=context )
-
 
 def search_ropa(request):
     print(request.GET)
-    busquedaRopa = Ropa.objects.filter( ropa_name__icontains = request.GET['search'])
-    context = {'busquedaRopa':busquedaRopa}
+    palabra_busqueda = request.GET['search']
+    busquedaRopa = Ropa.objects.filter( ropa_name__icontains = palabra_busqueda)
+    if busquedaRopa.exists():
+        context = {'busquedaRopa':busquedaRopa}
+    else:
+        context = {'errors': f'Lamentablemente no contamos con {palabra_busqueda} en stock.'}
     return render(request, 'search-ropa.html', context = context)
-
 
 def upload(request):
     return render(request, 'upload.html')
@@ -58,8 +62,9 @@ def crear_championes(request):
                 championes_precio = form.cleaned_data['championes_precio'],
             )
             context = {'new_championes' : new_championes}
+        else:
+            context = {'errors' : form.errors}
         return render(request, 'crear_championes.html', context=context )  
-
 
 def listar_accesorios(request):
     list_accesorios = Accesorios.objects.all()
@@ -81,4 +86,6 @@ def crear_accesorios(request):
                 accesorio_precio = form.cleaned_data['accesorio_precio'],
             )
             context = {'new_accesorio' : new_accesorio}
+        else:
+            context = {'errors' : form.errors}        
         return render(request, 'crear_accesorio.html', context=context )

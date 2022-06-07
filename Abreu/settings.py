@@ -47,11 +47,13 @@ MY_APPS = [
 
 
 THIRD_APPS = [
-    'django.contrib.humanize',    
+    'django.contrib.humanize',
+    'crispy_forms',    
 ]
 
 INSTALLED_APPS = BASE_APPS + MY_APPS + THIRD_APPS
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

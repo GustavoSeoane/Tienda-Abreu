@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 {% block content %}
 
 {% if form %}
 <h1>Vamos a crear algún accesorio</h1>
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <table>
-        {{form.as_table}}
-    </table>
+
+    {{form | crispy }}
+
     <input type="submit" , value="Guardar">
 </form>
 
@@ -28,6 +29,14 @@
         </div>
     </div>
 </div>
+
+
+{% elif errors %}
+
+<div style="color:red">
+  {{errors}}
+</div>
+
 
 {% endif %}
 {% endblock%}
