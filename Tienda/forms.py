@@ -13,7 +13,9 @@ class championes_forms(forms.Form):
     championes_precio = forms.FloatField()
     
 class accesorios_forms(forms.Form):
-    championes_name = forms.CharField(max_length=200)
-    championes_color = forms.CharField(max_length=100)
-    championes_marca = forms.CharField(max_length=100)
-    championes_precio = forms.FloatField()
+    accesorio_name = forms.CharField(max_length=200)
+    accesorio_tipo = forms.CharField(max_length=100)
+    accesorio_marca = forms.CharField(max_length=100)
+    accesorio_precio = forms.FloatField()
+
+    

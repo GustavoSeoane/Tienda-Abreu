@@ -70,15 +70,15 @@ def crear_accesorios(request):
     if request.method == 'GET':
         form = accesorios_forms()
         context = {'form' : form}
-        return render(request, 'crear_accesorios.html', context=context )
+        return render(request, 'crear_accesorio.html', context=context )
     else:  
         form = accesorios_forms(request.POST)
         if form.is_valid():
             new_accesorio = Accesorios.objects.create(
-                ropa_name = form.cleaned_data['accesorio_name'],
-                ropa_color = form.cleaned_data['accesorio_color'],
-                ropa_marca = form.cleaned_data['accesorio_marca'],
-                ropa_precio = form.cleaned_data['accesorio_precio'],
+                accesorio_name = form.cleaned_data['accesorio_name'],
+                accesorio_tipo = form.cleaned_data['accesorio_tipo'],
+                accesorio_marca = form.cleaned_data['accesorio_marca'],
+                accesorio_precio = form.cleaned_data['accesorio_precio'],
             )
             context = {'new_accesorio' : new_accesorio}
         return render(request, 'crear_accesorio.html', context=context )
