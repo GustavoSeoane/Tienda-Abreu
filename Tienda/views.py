@@ -16,13 +16,14 @@ def crear_ropa(request):
         context = {'form' : form}
         return render(request, 'crear_ropa.html', context=context )
     else:  
-        form = ropa_forms(request.POST)
+        form = ropa_forms(request.POST, request.FILES)
         if form.is_valid():
             new_ropa = Ropa.objects.create(
                 ropa_name = form.cleaned_data['ropa_name'],
                 ropa_color = form.cleaned_data['ropa_color'],
                 ropa_marca = form.cleaned_data['ropa_marca'],
                 ropa_precio = form.cleaned_data['ropa_precio'],
+                ropa_imagen = form.cleaned_data['ropa_imagen'],
             )
             context = {'new_ropa' : new_ropa}
         else:
@@ -53,13 +54,14 @@ def crear_championes(request):
         context = {'form' : form}
         return render(request, 'crear_championes.html', context=context )
     else:  
-        form = championes_forms(request.POST)
+        form = championes_forms(request.POST, request.FILES)
         if form.is_valid():
             new_championes = Championes.objects.create(
                 championes_name = form.cleaned_data['championes_name'],
                 championes_color = form.cleaned_data['championes_color'],
                 championes_marca = form.cleaned_data['championes_marca'],
                 championes_precio = form.cleaned_data['championes_precio'],
+                championes_imagen = form.cleaned_data['championes_imagen'],
             )
             context = {'new_championes' : new_championes}
         else:
@@ -77,13 +79,14 @@ def crear_accesorios(request):
         context = {'form' : form}
         return render(request, 'crear_accesorio.html', context=context )
     else:  
-        form = accesorios_forms(request.POST)
+        form = accesorios_forms(request.POST, request.FILES)
         if form.is_valid():
             new_accesorio = Accesorios.objects.create(
                 accesorio_name = form.cleaned_data['accesorio_name'],
                 accesorio_tipo = form.cleaned_data['accesorio_tipo'],
                 accesorio_marca = form.cleaned_data['accesorio_marca'],
                 accesorio_precio = form.cleaned_data['accesorio_precio'],
+                accesorio_imagen = form.cleaned_data['accesorio_imagen'],
             )
             context = {'new_accesorio' : new_accesorio}
         else:

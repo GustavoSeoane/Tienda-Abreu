@@ -19,7 +19,9 @@
 <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img Src={{ropaa.imagen.url}}>
+        {% if new_ropa.ropa_imagen %}
+        <img Src={{new_ropa.ropa_imagen.url}} width="180" height="180">
+        {% endif %}
       </div>
         <div class="col-md-8">
         <div class="card-body">
