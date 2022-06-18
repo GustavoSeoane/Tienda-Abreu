@@ -30,6 +30,15 @@ def crear_ropa(request):
             context = {'errors' : form.errors}
         return render(request, 'crear_ropa.html', context=context )
 
+def detalle_ropa(request, pk):
+    try:
+        ropa = Ropa.objects.get(id=pk)
+        context = {'ropa' : ropa}
+        return render(request, 'detalle_ropa.html', context=context)
+    except:
+        context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
+        return render(request, 'detalle_ropa.html', context=context)
+
 def search_ropa(request):
     print(request.GET)
     palabra_busqueda = request.GET['search']
@@ -68,6 +77,15 @@ def crear_championes(request):
             context = {'errors' : form.errors}
         return render(request, 'crear_championes.html', context=context )  
 
+def detalle_championes(request, pk):
+    try:
+        championes = Championes.objects.get(id=pk)
+        context = {'championes' : championes}
+        return render(request, 'detalle_championes.html', context=context)
+    except:
+        context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
+        return render(request, 'detalle_championes.html', context=context)
+
 def listar_accesorios(request):
     list_accesorios = Accesorios.objects.all()
     context = {'list_accesorios' : list_accesorios }
@@ -92,3 +110,12 @@ def crear_accesorios(request):
         else:
             context = {'errors' : form.errors}        
         return render(request, 'crear_accesorio.html', context=context )
+
+def detalle_accesorios(request, pk):
+    try:
+        accesorios = Accesorios.objects.get(id=pk)
+        context = {'accesorios' : accesorios}
+        return render(request, 'detalle_accesorios.html', context=context)
+    except:
+        context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
+        return render(request, 'detalle_accesorios.html', context=context)

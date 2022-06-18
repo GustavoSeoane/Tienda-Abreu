@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form acction="" method="post" >
+{% load humanize %} 
+    <h1> Detalle de la prenda seleccionada: </h1>
+
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            {% if ropa.ropa_imagen %}
+            <img Src={{ropa.ropa_imagen.url}} width="180" height="180">
+            {% endif %}
+          </div>
+            <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ropa.ropa_name}}</h5>
+              <p class="card-text">Es de color {{ropa.ropa_color}} y es de la marca {{ropa.ropa_marca}}.</p>
+              <p class="card-text"><small class="text-muted">Precio - USD: {{ropa.ropa_precio | intcomma}}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock%}
+

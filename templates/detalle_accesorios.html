@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form acction="" method="post">
+    {% load humanize %}
+    <h1> Detalle del accesorio seleccionado: </h1>
+
+        <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                {% if accesorios.accesorio_imagen %}
+                <img Src={{accesorios.accesorio_imagen.url}} width="180" height="180"> {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{accesorios.accesorio_name}}</h5>
+                    <p class="card-text">Es un/ una {{accesorios.accesorio_tipo}} y es de la marca {{accesorios.accesorio_marca}}.</p>
+                    <p class="card-text"><small class="text-muted">Precio - USD: {{accesorios.accesorio_precio | intcomma}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock%}
