@@ -6,16 +6,13 @@
 
 {% block content %}
 
-{% if accesorios %}
-    <h3 style="color:brown">Estas por eliminar el producto, esta seguro de continar??</h3>
-    <form action = "/tienda/delete-accesorios/{{accesorios.id}}/" method="POST">
+
+    <h3 style="color:brown">Estas por eliminar el producto {{object.accesorio_name}}, esta seguro de continar??</h3>
+    <form method="POST">
         {% csrf_token %}
         <input class="btn btn-outline-danger"  type="submit", value="Eliminar">
     </form>  
 
 
-{% else %}
-    {{message}}
-{% endif %}
 
 {% endblock %}
