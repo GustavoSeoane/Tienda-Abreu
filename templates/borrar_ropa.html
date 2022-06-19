@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Borrar Producto
+{% endblock %}
+
+{% block content %}
+
+{% if ropa %}
+    <h3 style="color:brown">Estas por eliminar el producto, esta seguro de continar??</h3>
+    <form action = "/tienda/delete-ropa/{{ropa.id}}/" method="POST">
+        {% csrf_token %}
+        <input class="btn btn-outline-danger"  type="submit", value="Eliminar">
+    </form>  
+
+
+{% else %}
+    {{message}}
+{% endif %}
+
+{% endblock %}

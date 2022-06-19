@@ -39,6 +39,22 @@ def detalle_ropa(request, pk):
         context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
         return render(request, 'detalle_ropa.html', context=context)
 
+def delete_ropa(request, pk):
+    try:
+        if request.method == 'GET':
+            ropa = Ropa.objects.get(id=pk)
+            context = {'ropa':ropa}
+        else:
+            ropa = Ropa.objects.get(id=pk)
+            ropa.delete()
+            context = {'message':'Prenda eliminada correctamente'}
+    
+        return render(request, 'borrar_ropa.html', context=context)
+    
+    except:
+        context = {'error':'El producto no existe'}
+        return render(request, 'borrar_ropa.html', context=context)
+
 def search_ropa(request):
     print(request.GET)
     palabra_busqueda = request.GET['search']
@@ -86,6 +102,23 @@ def detalle_championes(request, pk):
         context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
         return render(request, 'detalle_championes.html', context=context)
 
+def delete_championes(request, pk):
+    try:
+        if request.method == 'GET':
+            championes = Championes.objects.get(id=pk)
+            context = {'championes':championes}
+        else:
+            championes = Championes.objects.get(id=pk)
+            championes.delete()
+            context = {'message' : 'Champion eliminado correctamente!!!'}
+        
+        return render(request, 'borrar_championes.html', context=context)
+    
+    except:
+        context = {'error': 'El producto que desea borrar no existe en la base, contactese con el adminsitrador'}
+        return render(request, 'borrar_championes.html', context=context)
+
+
 def listar_accesorios(request):
     list_accesorios = Accesorios.objects.all()
     context = {'list_accesorios' : list_accesorios }
@@ -119,3 +152,36 @@ def detalle_accesorios(request, pk):
     except:
         context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
         return render(request, 'detalle_accesorios.html', context=context)
+
+def delete_accesorios(request, pk):
+    try:
+        if request.method == 'GET':
+            accesorios = Accesorios.objects.get(id=pk)
+            context = {'accesorios':accesorios}
+        else:
+            accesorios = Accesorios.objects.get(id=pk)
+            accesorios.delete()
+            context = {'message' : 'Accesorio eliminado correctamente!!!'}
+        
+        return render(request, 'borrar_accesorios.html', context=context)
+    
+    except:
+        context = {'error': 'El producto que desea borrar no existe en la base, contactese con el adminsitrador'}
+        return render(request, 'borrar_accesorios.html', context=context)
+
+
+
+    try:
+        if request.method == 'GET':
+            championes = Championes.objects.get(id=pk)
+            context = {'championes':championes}
+        else:
+            championes = Championes.objects.get(id=pk)
+            championes.delete()
+            context = {'message' : 'Champion eliminado correctamente!!!'}
+        
+        return render(request, 'borrar_championes.html', context=context)
+    
+    except:
+        context = {'error': 'El producto que desea borrar no existe en la base, contactese con el adminsitrador'}
+        return render(request, 'borrar_championes.html', context=context)
