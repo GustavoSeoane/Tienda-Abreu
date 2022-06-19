@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+{% if form %}
+    <h1>Vamos a actualizar ropita</h1>
+        <form action = "" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+       
+        {{form | crispy }}
+    
+        <input type="submit", value="Guardar">
+    </form>    
+
+{% elif new_ropa %}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        {% if new_ropa.ropa_imagen %}
+        <img Src={{new_ropa.ropa_imagen.url}} width="180" height="180">
+        {% endif %}
+      </div>
+        <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{new_ropa.ropa_name}}</h5>
+          <p class="card-text">Es de color {{new_ropa.ropa_color}} y es de la marca {{new_ropa.ropa_marca}}.</p>
+          <p class="card-text"><small class="text-muted">Precio - USD: {{new_ropa.ropa_precio}}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% elif errors %}
+
+  <div style="color:red">
+    {{errors}}
+  </div>
+
+  {% endif %}
+
+
+{% endblock%}

@@ -1,14 +1,16 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView
+from django.views.generic.edit import UpdateView
+from django.urls import reverse
 from Tienda.models import Marcas, Ropa, Championes, Accesorios
 from Tienda.forms import ropa_forms,championes_forms, accesorios_forms
 # Create your views here.
 
-def listar_ropa(request):
-    list_ropa = Ropa.objects.all()
-    context = {'list_ropa' : list_ropa }
-    return render (request, 'listar_ropa.html', context = context)
+class listar_ropa(ListView):
+    model = Ropa
+    template_name = 'listar_ropa.html'
 
 def crear_ropa(request):
     if request.method == 'GET':
@@ -54,6 +56,14 @@ def delete_ropa(request, pk):
     except:
         context = {'error':'El producto no existe'}
         return render(request, 'borrar_ropa.html', context=context)
+
+class ropa_actualizar(UpdateView):
+    model = Ropa
+    template_name = 'update_ropa.html'
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('detalle_ropa', kwargs = {'pk':self.object.pk})
 
 def search_ropa(request):
     print(request.GET)
@@ -118,6 +128,13 @@ def delete_championes(request, pk):
         context = {'error': 'El producto que desea borrar no existe en la base, contactese con el adminsitrador'}
         return render(request, 'borrar_championes.html', context=context)
 
+class championes_actualizar(UpdateView):
+    model = Championes
+    template_name = 'update_championes.html'
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('detalle_championes', kwargs = {'pk':self.object.pk})
 
 def listar_accesorios(request):
     list_accesorios = Accesorios.objects.all()
@@ -169,19 +186,12 @@ def delete_accesorios(request, pk):
         context = {'error': 'El producto que desea borrar no existe en la base, contactese con el adminsitrador'}
         return render(request, 'borrar_accesorios.html', context=context)
 
+class accesorios_actualizar(UpdateView):
+    model = Accesorios
+    template_name = 'update_accesorios.html'
+    fields = '__all__'
 
+    def get_success_url(self):
+        return reverse('detalle_accesorios', kwargs = {'pk':self.object.pk})
 
-    try:
-        if request.method == 'GET':
-            championes = Championes.objects.get(id=pk)
-            context = {'championes':championes}
-        else:
-            championes = Championes.objects.get(id=pk)
-            championes.delete()
-            context = {'message' : 'Champion eliminado correctamente!!!'}
-        
-        return render(request, 'borrar_championes.html', context=context)
-    
-    except:
-        context = {'error': 'El producto que desea borrar no existe en la base, contactese con el adminsitrador'}
-        return render(request, 'borrar_championes.html', context=context)
+   

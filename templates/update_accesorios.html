@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% if form %}
+<h1>Vamos a actualizar algún accesorio</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form | crispy }}
+
+    <input type="submit" , value="Guardar">
+</form>
+
+{% elif new_accesorio %}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            {% if new_accesorio.accesorio_imagen %}
+            <img Src={{new_accesorio.accesorio_imagen.url}} width="180" height="180">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{new_accesorio.accesorio_name}}</h5>
+                <p class="card-text">Es un/una {{new_accesorio.accesorio_tipo}} y es de la marca {{new_accesorio.accesorio_marca}}.</p>
+                <p class="card-text"><small class="text-muted">Precio - USD: {{new_accesorio.accesorio_precio}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% elif errors %}
+
+<div style="color:red">
+  {{errors}}
+</div>
+
+
+{% endif %}
+{% endblock%}
