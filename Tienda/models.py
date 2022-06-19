@@ -37,6 +37,7 @@ class Championes (models.Model):
       verbose_name_plural = 'Banda de Championes'
 
 class Accesorios (models.Model):
+
     accesorio_name = models.CharField(max_length=200) 
     accesorio_tipo = models.CharField(max_length=100)
     accesorio_marca = models.CharField(max_length=100)
@@ -46,3 +47,7 @@ class Accesorios (models.Model):
     class Meta:
       verbose_name = 'Accesorio'
       verbose_name_plural = 'Pila de Accesorios'
+
+class Prueba (models.Model):
+    prueba_name = models.CharField(max_length=200)
+    
