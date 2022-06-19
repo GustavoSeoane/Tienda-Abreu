@@ -23,8 +23,10 @@ from Abreu.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = 'index'),
-    path('tienda/',include('Tienda.urls'))
+    path('tienda/',include('Tienda.urls')),
+    path('auth/',include('users.urls'))
 ]
+
 
 
 if settings.DEBUG:

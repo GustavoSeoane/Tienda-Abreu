@@ -48,6 +48,5 @@ class Accesorios (models.Model):
       verbose_name = 'Accesorio'
       verbose_name_plural = 'Pila de Accesorios'
 
-class Prueba (models.Model):
-    prueba_name = models.CharField(max_length=200)
+
     

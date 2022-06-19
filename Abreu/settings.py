@@ -42,7 +42,8 @@ BASE_APPS = [
 
 
 MY_APPS = [
-    'Tienda'
+    'Tienda',
+    'users'
 ]
 
 
