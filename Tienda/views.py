@@ -6,11 +6,15 @@ from django.views.generic.edit import UpdateView
 from django.urls import reverse
 from Tienda.models import Marcas, Ropa, Championes, Accesorios
 from Tienda.forms import ropa_forms,championes_forms, accesorios_forms
+
 # Create your views here.
 
 class listar_ropa(ListView):
     model = Ropa
     template_name = 'listar_ropa.html'
+    context_object_name = 'posts'
+    ordering = ['ropa_name']
+    paginate_by = 5
 
 class crear_ropa(CreateView):
     model = Ropa
@@ -61,6 +65,9 @@ def upload(request):
 class listar_championes(ListView):
     model = Championes
     template_name = 'listar_championes.html'
+    context_object_name = 'posts'
+    ordering = ['championes_name']
+    paginate_by = 5
 
 class crear_championes(CreateView):
     model = Championes
@@ -98,6 +105,9 @@ class championes_actualizar(UpdateView):
 class listar_accesorios(ListView):
     model = Accesorios
     template_name = 'listar_accesorios.html'
+    context_object_name = 'posts'
+    ordering = ['accesorio_name']
+    paginate_by = 5
 
 class crear_accesorios(CreateView):
     model = Accesorios

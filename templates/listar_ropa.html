@@ -2,8 +2,6 @@
 
 {% block content %}
 
-{{message}}
-
 <form acction="" method="post" >
 {% load humanize %} 
     <h1> El listado de la ropa es el siguiente: </h1>
@@ -28,7 +26,45 @@
       </div>
     {% endfor %}
 
-{% endblock%}
+
+
+
+    <h1>Total de Productos: {{ page_obj.paginator.count }}</h1>
+
+    
+{% if is_paginated %} 
+  
+  <div class ="mt-2">
+    <ul class="pagination">
+
+      {% if page_obj.has_previous %}
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+          </li>
+        
+      {% endif %}
+        
+      {% if page_obj.has_next %}
+      <li> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Anterior</a></li>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <li> <a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <li> <a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+    
+      {% if page_obj.has_next %}
+      <li> <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+      {% endif %}
+    
+    </ul>
+   </div> 
+
+{% endif %}
+
+{% endblock %}
 
 
 

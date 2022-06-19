@@ -21,6 +21,9 @@ class Ropa (models.Model):
     ropa_precio = models.FloatField()
     ropa_imagen = models.ImageField(upload_to="ropa", null=True)
 
+    normal_pagination = True
+    values_for_page = 5
+
     class Meta:
         verbose_name = 'Ropa'
         verbose_name_plural = 'Mucha Ropa'
@@ -46,3 +49,6 @@ class Accesorios (models.Model):
     class Meta:
       verbose_name = 'Accesorio'
       verbose_name_plural = 'Pila de Accesorios'
+
+
+
