@@ -38,9 +38,9 @@
     <ul class="pagination">
 
       {% if page_obj.has_previous %}
-          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-          </li>
-        
+        <li class="page-item">  
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        </li>
       {% endif %}
         
       {% if page_obj.has_next %}
