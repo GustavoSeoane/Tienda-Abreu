@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{{context}}
 
 <form acction="" method="post" >
 {% load humanize %} 
@@ -27,6 +28,7 @@
       </div>
     {% endfor %}
 
+    
     <div style="color:red">
       {{errors}}
     </div>

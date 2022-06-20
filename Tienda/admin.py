@@ -7,7 +7,7 @@ from import_export.admin import ImportExportModelAdmin
 
 @admin.register(Marcas)
 class MarcasAdmin(admin.ModelAdmin):
-    list_display = ['name', 'activo']
+    list_display = ['marcas_name', 'contacto_name', 'contacto_mail' , 'descripcion', 'activo']
 
 
 class RopaResources(resources.ModelResource):
