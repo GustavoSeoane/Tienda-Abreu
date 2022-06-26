@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from users.forms import User_registration_form
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
 def login_view(request):
