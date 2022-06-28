@@ -1,5 +1,5 @@
 from django.urls import path
-from Tienda.views import crear_accesorios, listar_accesorios, listar_ropa, crear_ropa, search_product, listar_championes, crear_championes, crear_accesorios, detalle_ropa, detalle_championes, detalle_accesorios, delete_ropa, delete_championes, delete_accesorios, ropa_actualizar, championes_actualizar, accesorios_actualizar
+from Tienda.views import crear_accesorios, listar_accesorios, listar_ropa, crear_ropa, search_product, listar_championes, crear_championes, crear_accesorios, detalle_ropa, detalle_championes, detalle_accesorios, delete_ropa, delete_championes, delete_accesorios, ropa_actualizar, championes_actualizar, accesorios_actualizar, nosotros
 
 urlpatterns = [
     path('listar-ropa/', listar_ropa.as_view(), name = 'listar_ropa'),
@@ -17,5 +17,6 @@ urlpatterns = [
     path('crear-accesorios/', crear_accesorios.as_view(), name = 'crear_accesorios'),
     path('detalle-accesorios/<int:pk>/', detalle_accesorios, name = 'detalle_accesorios'),
     path('delete-accesorios/<int:pk>/', delete_accesorios.as_view(), name = 'delete_accesorios'),
-    path('update-accesorios/<int:pk>/', accesorios_actualizar.as_view(), name = 'accesorios_actualizar'),     
+    path('update-accesorios/<int:pk>/', accesorios_actualizar.as_view(), name = 'accesorios_actualizar'),
+    path('nosotros/', nosotros, name = 'nosotros'),     
 ]

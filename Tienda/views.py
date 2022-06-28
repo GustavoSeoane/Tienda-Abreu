@@ -148,4 +148,6 @@ class accesorios_actualizar(UpdateView):
     def get_success_url(self):
         return reverse('detalle_accesorios', kwargs = {'pk':self.object.pk})
 
-   
+def nosotros(request):
+        context = {'nosotros' : nosotros}
+        return render(request, 'nosotros.html', context=context)
