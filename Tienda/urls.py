@@ -1,10 +1,10 @@
 from django.urls import path
-from Tienda.views import crear_accesorios, listar_accesorios, listar_ropa, crear_ropa, search_ropa, listar_championes, crear_championes, crear_accesorios, detalle_ropa, detalle_championes, detalle_accesorios, delete_ropa, delete_championes, delete_accesorios, ropa_actualizar, championes_actualizar, accesorios_actualizar
+from Tienda.views import crear_accesorios, listar_accesorios, listar_ropa, crear_ropa, search_product, listar_championes, crear_championes, crear_accesorios, detalle_ropa, detalle_championes, detalle_accesorios, delete_ropa, delete_championes, delete_accesorios, ropa_actualizar, championes_actualizar, accesorios_actualizar
 
 urlpatterns = [
     path('listar-ropa/', listar_ropa.as_view(), name = 'listar_ropa'),
     path('crear-ropa/', crear_ropa.as_view(), name = 'crear_ropa'),
-    path('search-ropa/', search_ropa, name = 'search_ropa'),
+    path('search-product/', search_product, name = 'search_product'),
     path('detalle-ropa/<int:pk>/', detalle_ropa, name = 'detalle_ropa'),
     path('delete-ropa/<int:pk>/', delete_ropa.as_view(), name = 'delete_ropa'),
     path('update-ropa/<int:pk>/', ropa_actualizar.as_view(), name = 'ropa_actualizar'),      

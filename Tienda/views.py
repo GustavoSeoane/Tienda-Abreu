@@ -49,15 +49,21 @@ class ropa_actualizar(UpdateView):
     def get_success_url(self):
         return reverse('detalle_ropa', kwargs = {'pk':self.object.pk})
 
-def search_ropa(request):
-    print(request.GET)
-    palabra_busqueda = request.GET['search']
-    busquedaRopa = Ropa.objects.filter( ropa_name__icontains = palabra_busqueda)
+def search_product(request):
+    busquedaRopa = Ropa.objects.filter(ropa_name__icontains=request.GET['search'])
+    busquedaChampiones = Championes.objects.filter(championes_name__icontains=request.GET['search'])
+    busquedaAccesorios = Accesorios.objects.filter(accesorio_name__icontains=request.GET['search'])
     if busquedaRopa.exists():
         context = {'busquedaRopa':busquedaRopa}
+    elif busquedaChampiones.exists():
+        context = {'busquedaChampiones':busquedaChampiones}    
+    elif busquedaAccesorios.exists():    
+        context = {'busquedaAccesorios':busquedaAccesorios}
     else:
-        context = {'errors': f'Lamentablemente no contamos con {palabra_busqueda} en stock.'}
-    return render(request, 'search-ropa.html', context = context)
+        context = {'errors': 'Lamentablemente no contamos con el producto en stock.'}
+    return render(request, 'search_product.html', context = context)
+
+
 
 def upload(request):
     return render(request, 'upload.html')
