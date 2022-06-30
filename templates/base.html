@@ -12,7 +12,7 @@
 <body>
 
 
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-dark bg-primary" >
         <a class="navbar-brand" href="/">Inicio</a>
 
         <form class="form-inline my-2 my-lg-0" action="/tienda/search-product/" method="GET">
@@ -59,7 +59,40 @@
 
     {% block content %} {% endblock%}
 
+    <footer class="container-fluid">
+        <div class="row p-3 container-fluid  text-white text-center p-3" style="background: rgb(70, 25, 231);">
+            <div class="col">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2155.6892886398605!2d-71.43323391680195!3d-40.173346903802205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96111179c6665327%3A0x9108841b7e37241d!2sQuila%20Quina%20Muelle!5e0!3m2!1ses-419!2sar!4v1656596188437!5m2!1ses-419!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p></p> Avenida Siempre Viva Nº 124, Quila Quina</p>  
+            </div>   
+            <div class="col">   
+                <h3> Contactanos </h3>
+                    <div id="cnt_form">
+                        <form id="contact-form" class="contact" name="contact-form" method="post" action="enviar2.php">
+                            <div class="form-group">
+                            <input type="text" name="nombre" class="form-control name-field" required="required" placeholder="Ingreso tu nombre chango">
+                            </div> 
+                            <div class="form-group">
+                            <input type="email" name="email" class="form-control mail-field" required="required" placeholder="Indica tu mail">
+                            </div> 
+                            <div class="form-group">
+                            <textarea name="mensaje" id="message" required="required" class="form-control" placeholder="Detalle su consulta"></textarea>
+                            </div> 
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-light">Enviar</button>
+                            </div>                             
+                        </form>
+                    </div>
+                
+                <p class="sm">&copy; Todos los derechos reservados por Gustavo, Ismael y Hanks </p>
+                <a class="font-weight-bolder " href="/tienda/nosotros/"><h3> Our Team</h3></a>
+            </div>            
+        </div>
+    </footer>
 
+
+
+    
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
