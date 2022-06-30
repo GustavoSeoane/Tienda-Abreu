@@ -15,12 +15,26 @@
     <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Inicio</a>
 
+        {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <h5>{{request.user.username}}</h5>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/logout/">Logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/login/">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/register/">Register</a>
+            </li>
+        {% endif %}
+
         <form class="form-inline my-2 my-lg-0" action="/tienda/search-product/" method="GET">
             <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el Producto" aria-label="Search" name="search">
             <button class="btn btn-light" type="submit">Buscar Producto</button>
         </form>
-
-
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -47,10 +61,10 @@
                         <a class="dropdown-item" href="/tienda/crear-accesorios/">Alta nuevo Accesorio</a>
                     </div>
                 </li>
-
                 <li class="nav-item active">
                     <a class="nav-link" href="/tienda/nosotros/">Conocenos un poco más</a>
                 </li>
+            </ul>
         </div>
     </nav>
 

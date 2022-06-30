@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{{errors}}</h3>
+
+<h1>Complete los campos para regristarse</h1>
+<form action="" method="POST" enctype="margin-left:40rem;margin-top:7rem">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>    
+    <input type="submit" , value="Registrase">
+</form>
+
+{% endblock%} 

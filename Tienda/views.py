@@ -7,6 +7,9 @@ from django.urls import reverse
 from Tienda.models import Marcas, Ropa, Championes, Accesorios
 from Tienda.forms import ropa_forms,championes_forms, accesorios_forms
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 class listar_ropa(ListView):
@@ -16,7 +19,7 @@ class listar_ropa(ListView):
     ordering = ['ropa_name']
     paginate_by = 5
 
-class crear_ropa(CreateView):
+class crear_ropa(LoginRequiredMixin,CreateView):
     model = Ropa
     template_name = 'crear_ropa.html'
     fields = '__all__'
@@ -24,6 +27,7 @@ class crear_ropa(CreateView):
     def get_success_url(self):
         return reverse('detalle_ropa', kwargs = {'pk':self.object.pk})
 
+@login_required
 def detalle_ropa(request, pk):
     try:
         ropa = Ropa.objects.get(id=pk)
@@ -33,7 +37,7 @@ def detalle_ropa(request, pk):
         context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
         return render(request, 'detalle_ropa.html', context=context)
 
-class delete_ropa(DeleteView):
+class delete_ropa(LoginRequiredMixin,DeleteView):
     model = Ropa
     template_name = 'borrar_ropa.html'
     fields = '__all__'
@@ -41,7 +45,7 @@ class delete_ropa(DeleteView):
     def get_success_url(self):
         return reverse('listar_ropa')
 
-class ropa_actualizar(UpdateView):
+class ropa_actualizar(LoginRequiredMixin,UpdateView):
     model = Ropa
     template_name = 'update_ropa.html'
     fields = '__all__'
@@ -64,7 +68,7 @@ def search_product(request):
     return render(request, 'search_product.html', context = context)
 
 
-
+@login_required
 def upload(request):
     return render(request, 'upload.html')
 
@@ -75,7 +79,7 @@ class listar_championes(ListView):
     ordering = ['championes_name']
     paginate_by = 5
 
-class crear_championes(CreateView):
+class crear_championes(LoginRequiredMixin,CreateView):
     model = Championes
     template_name = 'crear_championes.html'
     fields = '__all__'
@@ -83,6 +87,7 @@ class crear_championes(CreateView):
     def get_success_url(self):
         return reverse('detalle_championes', kwargs = {'pk':self.object.pk})
 
+@login_required
 def detalle_championes(request, pk):
     try:
         championes = Championes.objects.get(id=pk)
@@ -92,7 +97,7 @@ def detalle_championes(request, pk):
         context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
         return render(request, 'detalle_championes.html', context=context)
 
-class delete_championes(DeleteView):
+class delete_championes(LoginRequiredMixin,DeleteView):
     model = Championes
     template_name = 'borrar_championes.html'
     fields = '__all__'
@@ -100,7 +105,7 @@ class delete_championes(DeleteView):
     def get_success_url(self):
         return reverse('listar_championes')
 
-class championes_actualizar(UpdateView):
+class championes_actualizar(LoginRequiredMixin,UpdateView):
     model = Championes
     template_name = 'update_championes.html'
     fields = '__all__'
@@ -115,7 +120,7 @@ class listar_accesorios(ListView):
     ordering = ['accesorio_name']
     paginate_by = 5
 
-class crear_accesorios(CreateView):
+class crear_accesorios(LoginRequiredMixin,CreateView):
     model = Accesorios
     template_name = 'crear_accesorio.html'
     fields = '__all__'
@@ -123,6 +128,7 @@ class crear_accesorios(CreateView):
     def get_success_url(self):
         return reverse('detalle_accesorios', kwargs = {'pk':self.object.pk})
 
+@login_required
 def detalle_accesorios(request, pk):
     try:
         accesorios = Accesorios.objects.get(id=pk)
@@ -132,7 +138,7 @@ def detalle_accesorios(request, pk):
         context = {'error': 'Lamentablemente no hemos podido encontrar el detalle solicitado'}
         return render(request, 'detalle_accesorios.html', context=context)
 
-class delete_accesorios(DeleteView):
+class delete_accesorios(LoginRequiredMixin,DeleteView):
     model = Accesorios
     template_name = 'borrar_accesorios.html'
     fields = '__all__'
@@ -140,7 +146,7 @@ class delete_accesorios(DeleteView):
     def get_success_url(self):
         return reverse('listar_accesorios')
 
-class accesorios_actualizar(UpdateView):
+class accesorios_actualizar(LoginRequiredMixin,UpdateView):
     model = Accesorios
     template_name = 'update_accesorios.html'
     fields = '__all__'
