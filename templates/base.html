@@ -14,23 +14,17 @@
 
     <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Inicio</a>
-
+<div class="row align">
         {% if request.user.is_authenticated %}
-            <li class="nav-item">
-                <h5>{{request.user.username}}</h5>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/logout/">Logout</a>
-            </li>
+        <a href="#" class="btn btn-light" style="margin: 1rem" type="button">{{request.user.username}}
+            <img src="{{request.user.user_profile.profile_imagen.url}}" style="height: 2rem">
+        </a>
+        <a href="/auth/logout/" class="btn btn-light" style="margin: 1rem" type="button">Logout</a>
         {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/login/">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/register/">Register</a>
-            </li>
-        {% endif %}
-
+        <a href="/auth/login/" class="btn btn-light" style="margin: 1rem" type="button">Login</an>
+        <a href="/auth/register/" class="btn btn-light" style="margin: 1rem" type="button">Register</a>
+        {% endif %}       
+</div>
         <form class="form-inline my-2 my-lg-0" action="/tienda/search-product/" method="GET">
             <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el Producto" aria-label="Search" name="search">
             <button class="btn btn-light" type="submit">Buscar Producto</button>
