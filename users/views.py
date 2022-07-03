@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login, logout
 
 from users.forms import User_registration_form
 
+from django.urls import reverse
+
+from django.views.generic import DetailView, UpdateView
+from users.models import User_profile
 # Create your views here.
 
 def login_view(request):
@@ -58,5 +62,15 @@ def register_view(request):
         context = {'form':form}
         return render(request,'auth/register.html',context = context)
 
+class Detail_user_profile(DetailView):
+    model = User_profile
+    template_name= 'auth/detail_user_profile.html'
 
+class Update_user_profile(UpdateView):
+    model = User_profile
+    template_name = 'auth/update_user_profile.html'
+    fields = ['phone', 'profile_imagen']
+
+    def get_success_url(self):
+        return reverse('detail_user_profile', kwargs = {'pk':self.object.pk})
 
