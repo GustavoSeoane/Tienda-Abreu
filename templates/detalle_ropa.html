@@ -19,9 +19,11 @@
               <h5 class="card-title">{{ropa.ropa_name}}</h5>
               <p class="card-text">Es de color {{ropa.ropa_color}} y es de la marca {{ropa.ropa_marca}}.</p>
               <p class="card-text"><small class="text-muted">Precio - USD: {{ropa.ropa_precio | intcomma}}</small></p>
-              <a href="/tienda/update-ropa/{{ropa.id}}" type="button" style="margin: 10px" class="btn btn-outline-primary">Modificar</button>
-              <a href="/tienda/delete-ropa/{{ropa.id}}" type="button" style="margin: 10px" class="btn btn-outline-danger"> Borrar  </button>
+              <a href="/tienda/update-ropa/{{ropa.id}}" type="button" style="margin: 10px" class="btn btn-outline-primary">Modificar</button></a>
+              <a href="/tienda/delete-ropa/{{ropa.id}}" type="button" style="margin: 10px" class="btn btn-outline-danger"> Borrar  </button></a>
+            </div>
+            </div>
+          </div>
+        </div>
 
-
-{% endblock%}
-
+                {% endblock%}
