@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
-from Tienda.models import Marcas, Ropa, Championes, Accesorios
+from Tienda.models import Marcas, Ropa, Championes, Accesorios, ImageDevice
 from Tienda.forms import ropa_forms,championes_forms, accesorios_forms
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -157,3 +157,6 @@ class accesorios_actualizar(LoginRequiredMixin,UpdateView):
 def nosotros(request):
         context = {'nosotros' : nosotros}
         return render(request, 'nosotros.html', context=context)
+
+
+

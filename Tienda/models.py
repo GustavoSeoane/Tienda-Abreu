@@ -56,3 +56,5 @@ class Accesorios (models.Model):
 
 
 
+class ImageDevice(models.Model):
+    image_device = models.ImageField(upload_to="nosotros") 
